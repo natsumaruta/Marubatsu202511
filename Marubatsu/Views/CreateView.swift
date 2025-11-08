@@ -10,7 +10,8 @@ import SwiftUI
 struct CreateView: View {
     
     
-    @StateObject private var vm = QuizViewModel() //ViewModelのクラスを呼ぶ
+    @ObservedObject  var vm: QuizViewModel
+//    @ObservedObject private var vm = QuizViewModel() //ViewModelのクラスを呼ぶ
     
 //    @State private var questionText = ""
 //    @State private var selectedAnswer = "O"
@@ -97,5 +98,5 @@ struct CreateView: View {
 }
 
 #Preview {
-    CreateView()
+//    CreateView()
 }

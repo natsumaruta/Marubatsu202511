@@ -33,7 +33,7 @@ struct ContentView: View {
     //    @State var showingAlert = false //アラートの表示・非表示を管理
     //    @State var alertTitle = "" //"正解"か"不正解"の文字を入れる用の変数
     
-    @StateObject private var vm = QuizViewModel() //ViewModelのクラスを呼ぶ
+    @StateObject var vm = QuizViewModel() //ViewModelのクラスを呼ぶ
     
 //    init(){
 //        if let decodedQuizzes = try? JSONDecoder().decode([Quiz].self, from: quizzesData) {
@@ -92,7 +92,7 @@ struct ContentView: View {
                 .toolbar{
                     ToolbarItem(placement: .topBarTrailing) {
                         NavigationLink{
-                            CreateView()
+                            CreateView(vm: vm)
                                 .navigationTitle("問題を作ろう")
                         }label:{
                             Image(systemName: "plus")

@@ -7,41 +7,14 @@
 
 import SwiftUI
 
-//Quixの構造体
-//Identifiable:一意に識別できる（＝IDを持つ）の意なので、これを入れたときは構造体の中にidを入れないといけない
-//Codable:データを保存や通信のためにエンコード、デコードして変換できるの意
-//struct Quiz: Identifiable,Codable {
-//    var id = UUID()
-//    var question: String
-//    var answer: Bool
-//}
-
+//Quixの構造体はModelsフォルダのQuiz.swiftで管理
 
 struct ContentView: View {
     
-    //    let quizExample: [Quiz] = [
-    //        Quiz(question: "iPhoneアプリを開発する統合環境はZcodeである", answer: false),
-    //        Quiz(question: "Xcode画面の右側にはユーティリティーズがある", answer: true),
-    //        Quiz(question: "Textは文字列を表示する際に利用する", answer: true)
-    //    ]
-//    @AppStorage("quiz") var quizzesData = Data() // UserDefaultsから問題を読み込む(Data型)
-//    @State var quizzesArray: [Quiz] = [] //問題を入れておく配列
-    
     let quizExample = QuizData.quizExample
     
-    //    @State var currentQuestionNum:Int = 0 //今何問目？
-    //    @State var showingAlert = false //アラートの表示・非表示を管理
-    //    @State var alertTitle = "" //"正解"か"不正解"の文字を入れる用の変数
-    
+    // initや各種変数はQuizViewModel.swiftで管理
     @StateObject var vm = QuizViewModel() //ViewModelのクラスを呼ぶ
-    
-//    init(){
-//        if let decodedQuizzes = try? JSONDecoder().decode([Quiz].self, from: quizzesData) {
-//            _quizzesArray = State(initialValue: decodedQuizzes)
-//        }
-//    }
-//    
-    
     
     var body: some View {
         NavigationStack{
@@ -103,33 +76,7 @@ struct ContentView: View {
             }
         }
     }
-    
-    //    //問題を表示する関数
-    //    func showQuestion() -> String {
-    //        let question = quizExample[currentQuestionNum].question
-    //        return question
-    //    }
-    //    //回答をチェックする関数
-    //    //正解なら次の問題を表示します
-    //    func checkAnswer(yourAnswer:Bool){
-    //        let quiz = quizExample[currentQuestionNum]
-    //        let answer = quiz.answer
-    //        if yourAnswer == answer {//正解の時
-    //            alertTitle = "正解"
-    //
-    //            //現在の問題番号が問題数（quizExample.count）
-    //            if currentQuestionNum+1 < quizExample.count {
-    //                currentQuestionNum += 1
-    //            }else{
-    //                currentQuestionNum = 0
-    //            }
-    //        }else{
-    //            alertTitle = "不正解"
-    //        }
-    //        showingAlert = true
-    //    }
-    
-    
+    // 各種関数はQuizViewModel.swiftで管理
 }
 
 #Preview {

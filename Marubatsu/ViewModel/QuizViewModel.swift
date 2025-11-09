@@ -109,10 +109,36 @@ class QuizViewModel: ObservableObject {
         
         //エンコードできたら保存して、配列も更新
         if let encodedQuizzes = try? JSONEncoder().encode(array) {
-//            quizzesData = encodedQuizzes
             UserDefaults.standard.set(encodedQuizzes, forKey: storeKey)
             quizzesArray = array //保存して配列も更新したあと、テキストフィールドを空白に戻す
             print(array)
+        }
+    }
+    
+    //【平日課題】行を入れ替える関数
+    func replaceRow(_ from: IndexSet, _ to: Int){
+        var array = quizzesArray
+        array.move(fromOffsets: from, toOffset: to)
+        let storeKey = "quiz"
+        
+        //エンコードできたら保存して、配列も更新
+        if let encodedQuizzes = try? JSONEncoder().encode(array) {
+            UserDefaults.standard.set(encodedQuizzes, forKey: storeKey)
+            quizzesArray = array //保存して配列も更新
+        }
+        
+    }
+    
+    //【平日課題】行を削除する関数
+    func deleterRow(offsets: IndexSet) {
+        var array = quizzesArray
+        array.remove(atOffsets: offsets)
+        let storeKey = "quiz" 
+        
+        //エンコードできたら保存して、配列も更新
+        if let encodedQuizzes = try? JSONEncoder().encode(array) {
+            UserDefaults.standard.set(encodedQuizzes, forKey: storeKey)
+            quizzesArray = array //保存して配列も更新
         }
     }
 }

@@ -26,6 +26,7 @@ struct ContentView: View {
                         .font(.system(size: 25))
                         .fontDesign(.rounded)
                         .background(.yellow)
+                        
                     
                     Spacer()
                     
@@ -72,6 +73,20 @@ struct ContentView: View {
                                 .font(.title)
                         }
                     }
+                }
+                //上記Viewが画面上に表示されるタイミングを検知して、クロージャ内のcurrentQuestionNumを0にする処理を実行
+//                .onAppear{
+                      // 配列が変わったら[0]に戻す
+//                    vm.currentQuestionNum = 0
+//                }
+                
+                //【平日課題】配列変更・削除後に１問目を表示する
+                //quizzesArrayの変化を検知して、クロージャ内のcurrentQuestionNumを0にする処理を実行
+                //.compactMap { $0.id } : id(UUID) の配列が変化
+                // $0 は配列の中の1つの要素
+                .onChange(of: vm.quizzesArray.compactMap{ $0.id }) {
+                    // 配列が変わったら[0]に戻す
+                    vm.currentQuestionNum = 0
                 }
             }
         }
